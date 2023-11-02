@@ -28,11 +28,12 @@ let gallerySimpleLightbox = new SimpleLightbox('.gallery a', lightboxOptions);
 let observer = new IntersectionObserver(onLoad, options);
 
 async function onLoad(entries, observer) {
+    
     entries.forEach(async entry => {
         if (entry.isIntersecting) {
+            page += 1;
             const data = await fetchPixabayApi(searchQuery, page, perPage);
             const totalPages = Math.ceil(data.totalHits / perPage);
-            page += 1;
             createGalleryMarkup(data.hits);
             gallerySimpleLightbox.refresh();
 
