@@ -68,7 +68,7 @@ function onFetchGallery(evt) {
                 clearMarkup();
                 createGalleryMarkup(data.hits);
                 if (data.hits.length === 0 || data.totalHits < perPage) {
-                    Notiflix.Notify.failure('Sorry, there are no images matching your search query. Please try again.');
+                    Notiflix.Notify.failure("We're sorry, but you've reached the end of search results.");
                 } else {
                 Notiflix.Notify.success(`Hooray! We found ${data.totalHits} images.`);}
                 gallerySimpleLightbox.refresh();
