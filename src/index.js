@@ -67,7 +67,10 @@ function onFetchGallery(evt) {
             } else {
                 clearMarkup();
                 createGalleryMarkup(data.hits);
-                Notiflix.Notify.success(`Hooray! We found ${data.totalHits} images.`);
+                if (data.hits.length === 0 || data.totalHits < perPage) {
+                    Notiflix.Notify.failure('Sorry, there are no images matching your search query. Please try again.');
+                } else {
+                Notiflix.Notify.success(`Hooray! We found ${data.totalHits} images.`);}
                 gallerySimpleLightbox.refresh();
 
 
